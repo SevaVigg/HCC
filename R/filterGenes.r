@@ -25,6 +25,11 @@ filterGenes <- function( DGEObj){
 
 	DGEObj		<- DGEObj[  , DGEObj$samples$"lib.size" >= 5000000 ] 
 
+#6 Remove samples with extremal norm factors
+
+	DGEObj		<- calcNormFactors( DGEObj)
+	DGEObj		<- DGEObj[ , DGEObj$samples$"norm.factors" >= 0.5 &  DGEObj$samples$"norm.factors" <= 1.85 ]
+
 return(DGEObj)
 
 }

@@ -21,6 +21,10 @@ filterGenes <- function( DGEObj){
 
 	DGEObj$samples$lib.size <- colSums(DGEObj$counts)
 
+#5 Remove small libraries
+
+	DGEObj		<- DGEObj[  , DGEObj$samples$"lib.size" >= 5000000 ] 
+
 return(DGEObj)
 
 }

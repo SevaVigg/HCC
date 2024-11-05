@@ -30,6 +30,11 @@ filterGenes <- function( DGEObj){
 	DGEObj		<- calcNormFactors( DGEObj)
 	DGEObj		<- DGEObj[ , DGEObj$samples$"norm.factors" >= 0.5 &  DGEObj$samples$"norm.factors" <= 1.85 ]
 
+#7 Convert groups and types to factors
+
+	DGEObj$samples$group	<- as.factor( DGEObj$samples$group)
+	DGEObj$samples$type	<- as.factor( DGEObj$samples$type)   
+
 return(DGEObj)
 
 }

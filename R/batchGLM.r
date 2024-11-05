@@ -1,4 +1,4 @@
-batchGLM <- function(DGEObj, plotName = "DGEObj"){
+batchGLM <- function(DGEObj, plotName = "DGEObj", Design){
 
 library(edgeR)
 
@@ -8,7 +8,7 @@ library(edgeR)
 
 	DGEObj		<- calcNormFactors( DGEObj, method = "TMM")
 	
-	Design		<- model.matrix(~DGEObj$samples$group)
+	Design		<- model.matrix(~DGEObj$samples$type)
 	
 	DGEObj		<- estimateGLMCommonDisp( DGEObj, Design)
 	DGEObj		<- estimateGLMTrendedDisp( DGEObj, Design)

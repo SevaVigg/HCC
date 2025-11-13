@@ -31,8 +31,15 @@ longTotalCounts %>% filter(str_detect(original_column_name, "Sample")) %>%
 
 
 
-longTotalCount_Sample %>% filter( str_detect( cols = Patient_TissueSource_Replicate, "pech")) %>%
-				
+longTotalCount_Sample %>% filter( str_detect( cols = Patient_TissueSource_Replicate, "pech"))
+
+
+longTotalCounts %>% filter(str_detect(original_column_name, "Sample") %>%
+			separate_wider_delim(cols = original_column_name, delim = "_", 
+			names = c(	"Database", 
+					"Patient_TissueSource_Replicate"),
+						   too_few = "align_start", too_many = "merge") -> longTotalCount
+
 
 #hccPCA <- princomp(Total.counts)
 
